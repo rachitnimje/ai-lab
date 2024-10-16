@@ -27,7 +27,7 @@
 #include <limits.h>
 #include <string.h>
 
-#define MAX_NODES 100
+#define MAX_NODES 50
 
 typedef struct Node {
     int id;
