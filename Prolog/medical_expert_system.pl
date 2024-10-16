@@ -1,4 +1,4 @@
-% Facts: Symptoms associated with diseases
+% Symptoms 
 symptom(fever, flu).
 symptom(cough, flu).
 symptom(headache, flu).
@@ -22,7 +22,7 @@ symptom(fever, measles).
 symptom(runny_nose, measles).
 symptom(conjunctivitis, measles).
 
-% Rule to diagnose disease based on symptoms
+% Rule 
 has_disease(Patient, Disease) :-
     symptom(Symptom1, Disease),
     symptom(Symptom2, Disease),
@@ -85,3 +85,4 @@ start :-
     write('Enter patient name: '),
     read(Patient),
     diagnose(Patient).
+
