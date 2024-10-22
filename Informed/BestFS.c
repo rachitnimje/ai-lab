@@ -29,7 +29,7 @@ typedef struct {
     int f_score;        // f_score = heuristic value of node
 } Node;
 
-bool graph[MAX_NODES][MAX_NODES];
+int graph[MAX_NODES][MAX_NODES];
 int heuristics[MAX_NODES];
 int numNodes;
 
@@ -99,7 +99,7 @@ void bestFS(int start, int goal) {
 
         // put the adjacent nodes into PQ
         for (int i = 0; i < numNodes; i++) {
-            if (graph[current->node][i] && !visited[i]) {
+            if (graph[current->node][i] != -1 && !visited[i]) {
                 int adjNodePathCost = cost[current->node] + graph[current->node][i];
 
                 if (adjNodePathCost < cost[i]) {
@@ -131,17 +131,23 @@ int main() {
     printf("Enter the number of connections: ");
     scanf("%d", &numConn);
 
+    for(int i = 0; i < numNodes; i++) {
+        for(int j = 0; j < numNodes; j++) {
+            graph[i][j] = -1;
+        } 
+    }
+
     printf("Enter the heuristics of each node: ");
     for (int i = 0; i < numNodes; i++) {
         scanf("%d", &heuristics[i]);
     }
 
-    printf("\nEnter connections (src, destination): \n");
+    printf("\nEnter connections (src destination cost): \n");
     for (int i = 0; i < numConn; i++) {
-        int node1, node2;
-        scanf("%d %d", &node1, &node2);
+        int node1, node2, weight;
+        scanf("%d %d %d", &node1, &node2, &weight);
 
-        graph[node1][node2] = graph[node2][node1] =true;
+        graph[node1][node2] = graph[node2][node1] = weight;
     }
 
     int start, goal;

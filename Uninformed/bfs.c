@@ -8,12 +8,11 @@ int front = -1, rear = -1;
 
 bool graph[MAX_VERTICES][MAX_VERTICES];
 bool visited[MAX_VERTICES];
-int vertices;
+int vertices, edges;
 
 void initGraph(int v) {
     for (int i = 0; i < v; i++) {
-        for (int j = 0; j < v; i++)
-        {
+        for (int j = 0; j < v; j++) {
             graph[i][j] = false;
         }
         visited[i] = false;
@@ -39,26 +38,28 @@ void enque(int val) {
             front = 0;
         rear++;
         queue[rear] = val;
+        return;
     }
-    else
-        printf("Queue is full!\n");
+    
+    printf("Queue is full! \n");
 }
 
 int deque() {
     if (!isEmpty()) {
         int ans = queue[front];
         front++;
+
         if (front > rear) {
             front = rear = -1;
         }
         return ans;
     }
 
-    printf("Queue is empty!");
+    printf("Queue is empty! \n");
     return -1;
 }
 
-void bfs(int edges, int start) {
+void bfs(int start) {
     enque(start);
     visited[start] = true;
     printf("BFS: ");
@@ -74,6 +75,8 @@ void bfs(int edges, int start) {
             }
         }
     }
+
+    printf("\n");
 }
 
 int main() {
@@ -82,7 +85,6 @@ int main() {
 
     initGraph(vertices);
 
-    int edges;
     printf("Enter the number of edges: ");
     scanf("%d", &edges);
 
@@ -96,8 +98,7 @@ int main() {
 
     int start;
     printf("Enter the starting node: ");
-    scanf("%d\n", &start);
+    scanf("%d", &start);
 
-    bfs(edges, start);
-    printf("/n");
+    bfs(start);
 }

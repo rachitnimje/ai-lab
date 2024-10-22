@@ -72,3 +72,78 @@ start :-
     write('Enter patient name: '),
     read(Patient),
     diagnose(Patient).
+
+
+# -----------------------------------------------------------------------------------------------------------------
+
+# symptom_of(fever, flu).
+# symptom_of(cough, flu).
+# symptom_of(headache, flu).
+
+# symptom_of(runny_nose, cold).
+# symptom_of(cough, cold).
+# symptom_of(sore_throat, cold).
+
+# symptom_of(chest_pain, pneumonia).
+# symptom_of(fever, pneumonia).
+# symptom_of(difficulty_breathing, pneumonia).
+
+# ask_symptom(fever) :-
+#     write('Do you have a fever? (y/n): '),
+#     read(Answer),
+#     Answer = y.
+
+# ask_symptom(cough) :-
+#     write('Do you have a cough? (y/n): '),
+#     read(Answer),
+#     Answer = y.
+
+# ask_symptom(headache) :-
+#     write('Do you have a headache? (y/n): '),
+#     read(Answer),
+#     Answer = y.
+
+# ask_symptom(runny_nose) :-
+#     write('Do you have a runny nose? (y/n): '),
+#     read(Answer),
+#     Answer = y.
+
+# ask_symptom(sore_throat) :-
+#     write('Do you have a sore throat? (y/n): '),
+#     read(Answer),
+#     Answer = y.
+
+# ask_symptom(chest_pain) :-
+#     write('Do you have chest pain? (y/n): '),
+#     read(Answer),
+#     Answer = y.
+
+# ask_symptom(difficulty_breathing) :-
+#     write('Do you have difficulty breathing? (y/n): '),
+#     read(Answer),
+#     Answer = y.
+
+# % rules
+# diagnose(Condition) :-
+#     findall(Symptom, symptom_of(Symptom, Condition), Symptoms),
+#     check_symptoms(Symptoms),
+#     write('\nYou might have '), write(Condition), write('.\n').
+
+# % Check if patient has all symptoms for a condition
+# check_symptoms([]).
+# check_symptoms([Symptom|Rest]) :-
+#     ask_symptom(Symptom),
+#     check_symptoms(Rest).
+
+# start_diagnosis :-
+#     write('Please answer the following questions with y or n.\n\n'),
+#     (diagnose(flu);
+#      diagnose(cold);
+#      diagnose(pneumonia);
+#      write('\nNo specific condition matched your symptoms.\n')),
+#      write('\nPlease consult a medical professional for accurate diagnosis.\n').
+
+
+# /*
+# ?- start_diagnosis.
+# */

@@ -47,7 +47,9 @@ int minmax(int grid[9], int player)
     for (int i = 0; i < 9; i++) {
         if (grid[i] == 0) {
             grid[i] = player;
+
             int thisScore = -minmax(grid, player * -1);
+
             if (thisScore > score) {
                 score = thisScore;
                 move = i;
@@ -69,6 +71,7 @@ void computerMove(int grid[9]) {
     for (int i = 0; i < 9; i++) { 
         if (grid[i] == 0) {
             grid[i] = 1;
+            
             int currentScore = -minmax(grid, -1);
 
             grid[i] = 0;

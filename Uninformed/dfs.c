@@ -34,8 +34,7 @@ bool isFull() {
 
 void push(int val) {
     if(!isFull()) {
-        top++;
-        stack[top] = val;
+        stack[++top] = val;
     }
     else {
         printf("Stack is full!\n");
@@ -44,8 +43,7 @@ void push(int val) {
 
 int pop() {
     if(!isEmpty()) {
-        int temp = stack[top];
-        top--;
+        int temp = stack[top--];
         return temp;
     }
     printf("Stack is empty!\n");
@@ -56,7 +54,7 @@ int peek() {
     if(!isEmpty()) {
         return stack[top];
     }
-    printf("Stack is empty!\n");
+    printf("Stack is empty! \n");
     return -1;
 }
 
@@ -96,7 +94,7 @@ int main() {
     printf("Enter the number of vertices/nodes: ");
     scanf("%d", &vertices);
 
-    // initGraph(vertices);
+    initGraph(vertices);
 
     int edges;
     printf("Enter the number of edges: ");
