@@ -9,6 +9,7 @@ int top = -1;
 bool graph[MAX_VERTICES][MAX_VERTICES];
 bool visited[MAX_VERTICES];
 int vertices;
+bool found = false;
 
 void initGraph(int v) {
     for (int i = 0; i < v; i++) {
@@ -79,13 +80,24 @@ int peek() {
 // }
 
 // recursive
-void dfs(int start) {
+void dfs(int start, int goal) {
+    if(found) {
+        return;
+    }
     visited[start] = true;
     printf("%d ", start);
 
+    if(start == goal) {
+        found = true;
+        return;
+    }
+
     for (int i = 0; i < vertices; i++) {
         if(!visited[i] && graph[start][i]) {
-            dfs(i);
+            dfs(i, goal);
+            if(found) {
+                return;
+            }
         }
     }
 }
@@ -94,7 +106,9 @@ int main() {
     printf("Enter the number of vertices/nodes: ");
     scanf("%d", &vertices);
 
-    initGraph(vertices);
+    // initGraph(vertices);
+
+    printf("debug");
 
     int edges;
     printf("Enter the number of edges: ");
@@ -108,10 +122,13 @@ int main() {
         addEdge(src, dest);
     }
 
-    int start;
+    int start, goal;
     printf("Enter the starting node: ");
     scanf("%d", &start);
 
-    dfs(start);
+    printf("Enter the goal node: ");
+    scanf("%d", &goal);
+
+    dfs(start, goal);
     printf("\n");
 }

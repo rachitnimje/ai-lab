@@ -1,3 +1,6 @@
+// TC: O((m^n)*n), m = number of nodes and n = number of colors
+// SC: O(n^2)
+
 #include <stdio.h>
 #include <stdbool.h>
 

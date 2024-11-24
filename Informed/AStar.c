@@ -1,9 +1,13 @@
+// TC: O((v+e)logv)  
+// SC: O(v^2)
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <limits.h>
 
 #define MAX_NODES 50
+
 // A* is specific implementation of Best-FS where we always get the most optimal path possible
 /* Example
 nodes: 6, connections: 8

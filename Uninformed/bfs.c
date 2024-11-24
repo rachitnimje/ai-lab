@@ -59,7 +59,7 @@ int deque() {
     return -1;
 }
 
-void bfs(int start) {
+void bfs(int start, int goal) {
     enque(start);
     visited[start] = true;
     printf("BFS: ");
@@ -67,6 +67,10 @@ void bfs(int start) {
     while (!isEmpty()) {
         int current = deque();
         printf("%d ", current);
+
+        if(current == goal) {
+            return;
+        }
 
         for (int i = 0; i < vertices; i++) {
             if (!visited[i] && graph[current][i]) {
@@ -96,9 +100,13 @@ int main() {
         addEdge(src, dest);
     }
 
-    int start;
+    int start, goal;
+
     printf("Enter the starting node: ");
     scanf("%d", &start);
 
-    bfs(start);
+    printf("Enter the goal node: ");
+    scanf("%d", &goal);
+
+    bfs(start, goal);
 }

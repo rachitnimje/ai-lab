@@ -1,3 +1,5 @@
+// TC: O(b^d) b = branching factor, d = depth (9 for ttt)
+
 #include <stdio.h>
 
 int win(int grid[9]) {
